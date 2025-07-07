@@ -1,18 +1,30 @@
-// Section Switching
-const sections = ['#home', '#couples', '#info'];
+// ✅ List of section IDs to show/hide manually
+const sections = ['#couples', '#info'];
+
+// ✅ Show the given section and scroll to it
 function showSection(id) {
   sections.forEach(sec => {
     const el = document.querySelector(sec);
-    el.classList.remove('active');
-    el.style.display = 'none';
+    if (el) {
+      el.style.display = 'none';
+    }
   });
+
   const target = document.querySelector(id);
-  target.classList.add('active');
-  target.style.display = 'block';
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  document.querySelector(`nav a[href="${id}"]`).classList.add('active');
+  if (target) {
+    target.style.display = 'block';
+
+    // ✅ Smooth scroll to the target
+    target.scrollIntoView({ behavior: 'smooth' });
+
+    // Update active nav link
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    const currentNav = document.querySelector(`nav a[href="${id}"]`);
+    if (currentNav) currentNav.classList.add('active');
+  }
 }
 
+// ✅ Nav click handler
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
@@ -22,12 +34,13 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
+// ✅ On page load, show correct section
 window.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash || '#home';
+  const hash = window.location.hash || '#couples';
   showSection(hash);
 });
 
-// Countdown
+// ✅ Wedding Countdown Timer
 const weddingDate = new Date("July 13, 2025 11:00:00").getTime();
 setInterval(() => {
   const now = new Date().getTime();
@@ -49,7 +62,7 @@ setInterval(() => {
   document.getElementById("seconds").innerText = s;
 }, 1000);
 
-// Accordion Toggle
+// ✅ Accordion Toggle
 const toggleButtons = document.querySelectorAll('.toggle-btn');
 let activeContent = null;
 let activeButton = null;
@@ -72,7 +85,6 @@ toggleButtons.forEach(button => {
   });
 });
 
-// Close accordion on outside click
 document.addEventListener('click', function (e) {
   const isAccordionArea = e.target.closest('.accordion');
   if (!isAccordionArea && activeContent) {
@@ -83,7 +95,7 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// Floating Hearts (Optional Animation)
+// ✅ Optional Floating Hearts Animation
 setInterval(() => {
   const heart = document.createElement('div');
   heart.className = 'heart';
