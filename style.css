@@ -47,41 +47,79 @@ section.active {
 
 /* Hero Section */
 .hero {
-  background: url('images/Home (1).png') no-repeat center center/cover;
+  background: url('images/Copy\ of\ Home.png') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: relative;
 }
+.invite-inside {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #fffcfc;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 6px rgba(145, 125, 125, 0.4);
+}
+
+@media (max-width: 480px) {
+  .invite-inside {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .overlay {
+    bottom: 70px; /* prevent overlapping */
+  }
+}
+
+
+
+@keyframes fadeDown {
+  0% {
+    opacity: 2;
+    transform: translate(-50%, -40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
 
 .overlay {
   position: absolute;
-  bottom: 30px;
+  bottom: 320px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(184, 173, 173, 0.5);
   backdrop-filter: blur(5px);
   padding: 10px 20px;
   border-radius: 15px;
   text-align: center;
-  color: white;
+  color: rgb(168, 80, 80);
 }
 
 .countdown-wrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin: 20px 0;
+  margin-top: 10px;   /* reduce top margin */
+  margin-bottom: 0;   /* optional: reduce space below */
 }
 
+
 .countdown-box {
-  background: rgba(97, 86, 86, 0.1);
+  background: rgba(218, 207, 207, 0.1);
   padding: 15px;
   border-radius: 10px;
   min-width: 80px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(188, 72, 72, 0.2,0.2);
   transition: transform 0.3s ease;
 }
 
@@ -93,12 +131,12 @@ section.active {
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  color: #e1c215;
+  color: #e7c504;
 }
 
 .countdown-box .label {
   font-size: 0.9rem;
-  color: #fff;
+  color: #ece1e1;
 }
 
 /* Couples Section */
@@ -289,5 +327,80 @@ footer {
 
   #countdown {
     font-size: 0.8rem;
+  }
+}
+/* ✅ Responsive Fixes for Mobile View */
+@media (max-width: 480px) {
+  /* Fix nav bar wrapping */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+
+  nav a {
+    margin: 6px 10px;
+    display: inline-block;
+  }
+
+  /* Adjust invitation text spacing and size */
+  .invite-text {
+    top: 5%;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    padding: 5px 10px;
+  }
+
+  /* Adjust countdown box container */
+  .countdown-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .countdown-box {
+    width: 90px;
+    min-width: unset;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .countdown-box span {
+    font-size: 1.3rem;
+  }
+
+  .countdown-box .label {
+    font-size: 0.8rem;
+  }
+
+  /* Lift the countdown closer to center */
+  .overlay {
+    bottom: 90px;
+    padding: 10px;
+    max-width: 90vw;
+  }
+
+  /* Couple image resize */
+  .couple img {
+    height: 220px;
+  }
+
+  /* Heading size in couples section */
+  .couples-section h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Toggle button size */
+  .toggle-btn {
+    font-size: 0.9rem;
+  }
+
+  /* Ensure invite text doesn't clash */
+  .hero {
+    align-items: flex-start;
+    padding-top: 60px;
   }
 }
